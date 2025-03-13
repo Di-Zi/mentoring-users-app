@@ -1,0 +1,23 @@
+<div class="header-materails">
+  <button mat-fab color="primary" class="back-material-fab-button" (click)="onBackToFolder()">
+    <mat-icon aria-hidden="false" aria-label="arrow_back" fontIcon="arrow_back"></mat-icon>
+  </button>
+  <div class="header-materails__title">
+    <h1>{{ vm.openedFolder?.title }}</h1>
+  </div>
+</div>
+
+<ng-container
+  *ngrxLet="{
+    openedFolder: openedFolder$,
+    materials: materials$,
+    status: status$,
+    errors: errors$
+  } as vm"
+>
+
+  <users-materials-list [vm]="vm" (deleteMaterial)="onDeleteMaterial(material)" (openMaterial)="onOpenMaterial(material)"/>
+
+  <users-materials-add-button></users-materials-add-button>
+
+</ng-container>
